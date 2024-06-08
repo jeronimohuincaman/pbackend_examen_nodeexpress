@@ -25,6 +25,14 @@ router.post('/', async (req, res) => {
         //Encapsular recibidos
         const nuevoAuto = await Auto.create({
             //propiedad: valor,
+            marca: body.marca,
+            modelo: body.modelo,
+            anio: body.anio,
+            estado: body.estado,
+            km: body.km,
+            precio: body.precio,
+            moneda: body.moneda,
+            caracteristica: body.caracteristica
         })
 
         res.status(201).json({ success: true, result: nuevoAuto, message: 'Auto creado con exito' });
