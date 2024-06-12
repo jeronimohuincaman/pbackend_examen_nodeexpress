@@ -49,7 +49,7 @@ router.put('/:idauto', async (req, res) => {
 
     try {
         //Manejar caso de exito
-        const auto = Auto.findByPk(idauto);
+        const auto = await Auto.findByPk(idauto);
         if (!auto) {
             return res.status(404).json({ success: false, message: 'Auto no encontrado' });
         }
