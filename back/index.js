@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Importacion de controllador de rutas
 const autosRoute = require('./src/controllers/auto.controller');
+const productosRoute = require('./src/controllers/productos.controller');
 
 //Mensaje de bienvenida
 app.get('/', (req, res) => {
@@ -21,7 +22,8 @@ app.get('/', (req, res) => {
     });
     
 //Utilizacion de controllador de rutas
-app.use('/autos', autosRoute)
+app.use('/autos', autosRoute);
+app.use('/productos', productosRoute);
 
 //Verificador
 app.listen(port, () => {
