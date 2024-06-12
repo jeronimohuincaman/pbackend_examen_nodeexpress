@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Auto = require('../models/autos.model');
+const Auto = require('../models/autos.model'); //Utilizamos nuestro modelo de base de datos.
 
 //Obtener registros
 router.get('/', async (req, res) => {
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
     try {
         //Manejar caso de exito
         await Auto.sync();
-        //Encapsular recibidos
+        //Encapsular datos recibidos
         const nuevoAuto = await Auto.create({
             //propiedad: valor,
             marca: body.marca,
@@ -53,7 +53,7 @@ router.put('/:idauto', async (req, res) => {
         if (!auto) {
             return res.status(404).json({ success: false, message: 'Auto no encontrado' });
         }
-        //Encapsular recibidos
+        //Encapsular datos recibidos
         const updatedAuto = await auto.update(body);
         res.status(200).json({ success: true, result: updatedAuto, message: 'Auto actualizado con exito' });
     } catch (error) {
@@ -66,13 +66,16 @@ router.put('/:idauto', async (req, res) => {
 router.delete('/:idauto', async (req, res) => {
     const { idauto } = req.params;
     try {
+        //Manejar caso de exito
         const auto = await Auto.findByPk(idauto);
         if (!auto) {
             return res.status(404).json({ success: false, message: 'Auto no encontrado' });
         }
+        //Eliminamos registro
         await auto.destroy();
         res.status(200).json({ success: true, result: auto, message: 'Auto eliminado con exito' });
     } catch (error) {
+        //Manejar caso de error
         res.status(400).json({ success: false, message: 'Error al eliminar el auto' });
     }
 });
