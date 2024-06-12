@@ -1,0 +1,14 @@
+{
+  "name": "pbackend_examen_nodeexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "back": "nodemon ./back/index.js",
+    "front": "cd ./front && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
