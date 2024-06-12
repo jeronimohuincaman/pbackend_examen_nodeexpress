@@ -12,8 +12,21 @@ router.get('/', async (req, res) => {
         res.status(200).json({ success: true, result: productos, message: 'Productos obtenidos con exito' });
     } catch (error) {
         //Manejar caso de error
-        console.log(error)
         res.status(400).json({ success: false, result: "Productos", message: 'Error al obtener productos' });
+    }
+});
+
+//Obtener un solo registro
+router.get('/:idproducto', async (req, res) => {
+    const { params } = req;
+    const idproducto = params.idproducto;
+    try {
+        //Manejar caso de exito
+        const producto = await Producto.findByPk(idproducto);
+        res.status(200).json({ success: true, result: producto, message: 'Producto obtenido con exito' });
+    } catch (error) {
+        //Manejar caso de error
+        res.status(400).json({ success: false, result: "Producto", message: 'Error al obtener producto' });
     }
 });
 
