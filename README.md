@@ -25,25 +25,44 @@ npm run front
 
 ### Consulta
 ```http
-GET localhost:3000/endpoint
+GET localhost:3000/productos
 ```
-```http
-GET localhost:3000/endpoint
-```
-| Parameter | Type     | Description                |
+| Accion | Parametros     | Description                |
 | :-------- | :------- | :------------------------- |
-| `` | `` |  |
-| `` | `` |  |
-| `` | `` | |
-| `` | `` | |
+| `(vacio)` | `` | Lista todos los productos |
+| `/:idproducto` | `` | Trae un solo producto |
+| `/filtrados` | `?categoria=""` | Lista por categorias|
+| `/ordenados` | `?sort="(cantidad/precio/nombre)"` | |
 
 ### Alta en json
 ```http
-POST localhost:3000/endpoint
+POST localhost:3000/productos
 ```
-| Parameter | Type | Description |
-| :-------- | :---- | :----------- |
-| `` | `` |  |
-| `` | `` |  |
-| `` | `` |  |
+#### Payload
+```json
+{
+	"nombre": "Acolchado",
+	"precio": 20,
+	"cantidad": 40,	
+	"categoria": "Hogar"
+}
+```
+
+### Modificacion en json
+```http
+PUT localhost:3000/productos/:idproducto
+```
+#### Payload
+```json
+{
+	"nombre": "Acolchado",
+	"precio": 20,
+	"cantidad": 40,	
+	"categoria": "Hogar"
+}
+```
+
+### Baja
+```http
+PUT localhost:3000/productos/:idproducto
 ```
