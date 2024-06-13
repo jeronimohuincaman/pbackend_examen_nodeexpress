@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 //Utilizacion de dependencias
 app.use(cors());
-app.use(morgan());
+app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
